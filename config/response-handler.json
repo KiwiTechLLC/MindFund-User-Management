@@ -1,0 +1,10 @@
+{
+
+"firstNameRequired" : "First Name Required!",
+"lastNameRequired" : "Last Name Required!",
+"languageRequired" : "Please Select Language",
+"emailRequired" : "Email Id Required!",
+"passwordRequired" : "Password Required",
+"emailCheck" : "Email is already exists!"
+
+}
