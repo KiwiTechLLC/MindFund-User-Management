@@ -1,10 +1,31 @@
 {
 
-"firstNameRequired" : "First Name Required!",
-"lastNameRequired" : "Last Name Required!",
-"languageRequired" : "Please Select Language",
-"emailRequired" : "Email Id Required!",
-"passwordRequired" : "Password Required",
-"emailCheck" : "Email is already exists!"
+	"firstNameRequired" : {
+		"en" : "First Name Required!",
+		"es" : "First Name Required!" 
+
+	},
+	"lastNameRequired" : {
+		"en" : "Last Name Required!",
+		"es" : "Last Name Required!" 
+	},
+	"languageRequired" : {
+		"en" : "Please Select Language",
+		"es" : "Please Select Language"
+	},
+	"emailRequired" : {
+		"en" : "Email Id Required!",
+		"es" : "Email Id Required!"
+	},
+
+	"passwordRequired" : {
+		"en" : "Password Required",
+		"es" : "Password Required"
+	},
+
+	"emailCheck" : {
+		"en" :  "Email is already exists!",
+		"es" :  "Email is already exists!"
+	}
 
 }

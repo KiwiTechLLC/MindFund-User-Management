@@ -21,6 +21,18 @@ var UserSchema = new Schema({
   email: {
   	type:String
   },
+  signup_type: {
+    type:String  // google, apple, app
+  },
+  google_token: {
+    type:String
+  },
+  profile_image: {
+    type:String
+  },
+  apple_token:{
+    type:String
+  },
   password: {
   	type:String
   },
