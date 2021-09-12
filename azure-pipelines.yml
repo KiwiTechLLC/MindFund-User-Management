@@ -1,0 +1,25 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- dev
+
+#resources:
+#- repo: self
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscription: 'dev-pipeline'
+    azureContainerRegistry: '{"loginServer":"mindfunddevregistry.azurecr.io", "id" : "/subscriptions/1c9e8697-05d9-43e7-93cc-d6dd84f4738f/resourceGroups/MindFundTec-Dev-Cluster/providers/Microsoft.ContainerRegistry/registries/mindfunddevregistry"}'
+    dockerComposeFile: 'dev.yml'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'buildAndpush'
+    additionalImageTags: $(Build.BuildId)
