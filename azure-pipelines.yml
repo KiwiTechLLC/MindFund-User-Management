@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '5e77009f-2542-4402-8328-f3b08872a873'
-  imageRepository: 'devmindfundusermanagementappv3'
+  imageRepository: 'dev-mindfund-user-management'
   containerRegistry: 'mindfunddqsregistry.azurecr.io'
   dockerfilePath: 'Dockerfile' #'/src/Dockerfile'
   tag: '$(Build.BuildId)'
