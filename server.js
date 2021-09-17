@@ -9,7 +9,7 @@ const cors = require("cors");
 
 
 const routes = require("./routes/v1/index.js");
-const port = process.env.PORT;
+const port = process.env.PORT || 8080;
 const host = process.env.HOST || "localhost";
 const environment = process.env.NODE_ENV;
 
