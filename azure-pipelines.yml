@@ -1,31 +1,39 @@
+# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
 trigger:
 - dev
 
-pool:
-  vmImage: 'ubuntu-latest'
+resources:
+- repo: self
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '14.x'
-  displayName: 'Install Node.js'
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: '5e77009f-2542-4402-8328-f3b08872a873'
+  imageRepository: 'devmindfundusermanagementappv3'
+  containerRegistry: 'mindfunddqsregistry.azurecr.io'
+  dockerfilePath: 'Dockerfile' #'/src/Dockerfile'
+  tag: '$(Build.BuildId)'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
-  
-- task: Docker@2
-  inputs:
-    containerRegistry: 'mindfunddevregistry'
-    repository: 'Azure Container Registry'
-    command: 'build'
-    Dockerfile: '**/Dockerfile'
-  displayName: 'Docker image build'
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
 
-- task: Docker@2
-  inputs:
-    containerRegistry: 'mindfundusermanagement'
-    repository: 'Azure Container Registry'
-    command: 'push'
-  displayName: 'Docker image push'
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
