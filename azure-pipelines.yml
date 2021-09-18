@@ -38,19 +38,19 @@ stages:
         tags: |
           $(tag)
 
-  - task: HelmInstaller@0
-    inputs:
-- task: HelmDeploy@0
-  inputs:
-    connectionType: 'Azure Resource Manager'
-    azureResourceGroup: 'MindFundTec-Dev-Cluster'
-    kubernetesCluster: 'mindfund-dev-backend'
-    useClusterAdmin: true
-    namespace: 'dev'
-    command: 'upgrade'
-    chartType: 'FilePath'
-    chartPath: 'helm/Chart.yaml'
-    releaseName: 'dev'
-      helmVersion: '2.14.1'
-      installKubectl: true
+     - task: HelmInstaller@0
+       inputs:
+     - task: HelmDeploy@0
+       inputs:
+        connectionType: 'Azure Resource Manager'
+        azureResourceGroup: 'MindFundTec-Dev-Cluster'
+        kubernetesCluster: 'mindfund-dev-backend'
+        useClusterAdmin: true
+        namespace: 'dev'
+        command: 'upgrade'
+        chartType: 'FilePath'
+        chartPath: 'helm/Chart.yaml'
+        releaseName: 'dev'
+          helmVersion: '2.14.1'
+          installKubectl: true
       
