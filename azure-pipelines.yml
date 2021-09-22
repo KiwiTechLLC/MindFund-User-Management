@@ -41,11 +41,11 @@ stages:
       inputs:
         helmVersion: '2.14.1'
         installKubectl: false
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'helm'
-    publishLocation: 'Container'
-    StoreAsTar: true
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'helm'
+        publishLocation: 'Container'
+        StoreAsTar: true
 
    
