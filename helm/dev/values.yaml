@@ -39,7 +39,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 11000
-  targetPort: 8080
+  targetport: 8080
 
 container:
   port : 8080
