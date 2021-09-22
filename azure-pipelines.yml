@@ -41,6 +41,11 @@ stages:
       inputs:
         helmVersion: '3.4.0'
         installKubectl: false
+    - task: HelmDeploy@0
+      inputs:
+        command: 'package'
+        chartPath: '**/helm/dev'
+
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
